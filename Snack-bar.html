@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SNACK BAR</title>
+    <style>
+        body {
+            background-image: url('https://wallpaper.forfun.com/fetch/73/7318703eac112fdbcc32c3acb044251c.jpeg?h=900&r=0.5');
+            background-size: 100%;
+            background-repeat: no-repeat; 
+            color: black;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            width: 50%;
+            cursor: pointer; /* Adiciona o efeito de cursor como ponteiro */
+            transition: background 0.3s ease; /* Adiciona uma transição suave ao fundo */
+        }
+
+        .card:hover,
+        .card.active {
+            background: rgba(255, 255, 255, 0.6); /* Altera a cor de fundo quando o mouse passa sobre o cartão ou quando o cartão está ativo */
+        }
+
+        .nome-lanche {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .ingredientes {
+            font-weight: normal;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function selecionarLanche(element, lanche) {
+            // Remove a classe 'active' de todos os outros cartões
+            var cards = document.querySelectorAll('.card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('active');
+            }
+
+            // Adiciona a classe 'active' ao cartão clicado
+            element.classList.add('active');
+
+            // Abre a personalização quando o cartão é clicado duas vezes
+            element.ondblclick = function() {
+                abrirPersonalizacao(lanche);
+            };
+        }
+
+        function abrirPersonalizacao(lanche) {
+            var url = 'personalizacao.html?lanche=' + encodeURIComponent(lanche);
+            window.open(url, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <h1>Bem-vindo à nossa lanchonete!</h1>
+    <h2>Por favor, selecione o lanche que você deseja pedir:</h2>
+
+    <div class="card" onclick="selecionarLanche(this, 'X TUDO')">
+        <div class="nome-lanche">X TUDO</div>
+        <div class="ingredientes">Pão, hambúrguer, queijo, bacon, ovo, alface, tomate e molho especial</div>
+    </div>
+
+    <div class="card" onclick="selecionarLanche(this, 'MEGA LANCHE')">
+        <div class="nome-lanche">MEGA LANCHE</div>
+        <div class="ingredientes">Pão, dois hambúrgueres, queijo cheddar, cebola crispy, alface, tomate e molho barbecue</div>
+    </div>
+
+    <div class="card" onclick="selecionarLanche(this, 'X SALADA')">
+        <div class="nome-lanche">X SALADA</div>
+        <div class="ingredientes">Pão, hambúrguer, queijo, alface, tomate e molho verde</div>
+    </div>
+
+    <div class="card" onclick="selecionarLanche(this, 'X FRANGO')">
+        <div class="nome-lanche">X FRANGO</div>
+        <div class="ingredientes">Pão, filé de frango, queijo, alface, tomate e maionese</div>
+    </div>
+</body>
+</html>
+
